@@ -1,0 +1,58 @@
+﻿@model ECommerce.Models.Product
+@{
+    ViewData["Title"] = "Buy Now";
+    Layout = "~/Views/Shared/_mainLayout.cshtml";
+}
+
+<hr />
+
+<h1 class="text-center">Buy Now !</h1>
+<hr />
+
+<div class="d-grid justify-content-center w-100" style="background-color : #eee; padding : 20px; ">
+
+<table class="d-grid justify-content-center w-100 table table-active table-striped table-dark text-center">
+    <tr class="table-bordered">
+        <td>Product Name </td>
+        <td>@Model.Name</td>
+    </tr>
+    <tr>
+        <td>Available Quantity</td>
+        <td>@Model.Quantity</td>
+    </tr>
+    <tr>
+        <td>Unit Price </td>
+        <td>@Model.Price</td>
+    </tr>
+</table>
+
+<form method="post" >
+    <div class="form-group">
+        <label class="control-label"> Number Of Units </label>
+        <input  class="form-control" name="Quantity" type="number" min="1" max="@Model.Quantity" />
+    </div>
+    <div class="form-group">
+        <label class="control-label" > Size </label>
+        <select class="form-control" name="Size">
+            <option value="Small" selected>Small</option>
+            <option value="Medium" >Medium</option>
+            <option value="Larg">Larg</option>
+            <option value="XL">XL</option>
+        </select> 
+
+    </div>
+     <div class="form-group">
+        <label class="control-label"> Color </label>
+        <select class="form-control" name="Color">
+            <option value="White" selected>White</option>
+            <option value="Black">Black</option>
+        </select> 
+
+    </div>
+    <input hidden name="subTotal" value="@Model.Price"/>
+    <input hidden name="product_id" value="@Model.Id"/>
+
+    <input type="submit" value="Buy" class="btn btn-info mt-2"/>
+</form>
+
+</div>
